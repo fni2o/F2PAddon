@@ -1,0 +1,129 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" 
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+ xsi:schemaLocation="http://www.blizzard.com/wow/ui/ 
+ 
+ ..\..\FrameXML\UI.xsd">
+
+	<Script File="f2paddon.lua"/>
+	<Frame name="F2PAddonFrame">
+		<Scripts>
+			<OnLoad function="F2PAddon_OnLoad"/>
+            <OnEvent function="F2PAddon_OnEvent"/>
+			<OnUpdate function="F2PAddon_OnUpdate"/>
+		</Scripts>
+	</Frame>
+	
+	<Font name="F2PAddonMonoFont" font="Interface\AddOns\F2PAddon\fonts\ConsolaMono.ttf" virtual="true">
+		<FontHeight>
+			<AbsValue val="10" />
+		</FontHeight>
+    </Font>
+	
+	<Frame name="F2PAddonQueueInfoFrame" parent="UIParent" enableMouse="true" movable="true" clampedToScreen="true" hidden="true" frameStrata="DIALOG">
+		<Size x="238" y="290" />
+		<Anchors>
+			<Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="PVPUIFrame">
+					<Offset x="0" y="0"/>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="$parent_Title" parentKey="title" inherits="GameFontNormal" text="F2PQ">
+					<Anchors>
+						<Anchor point="TOP" relativePoint="TOP" relativeTo="F2PAddonQueueInfoFrame">
+							<Offset x="60" y="-26"/>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="F2PQText" parentKey="text" inherits="F2PAddonMonoFont" justifyV="TOP" justifyH="LEFT" text="">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="29" y="-57"/>
+						</Anchor>
+					</Anchors>
+					<Color r="1.0" g="1.0" b="1.0" a="1" />
+				</FontString>
+				<FontString name="$parent_Notes" parentKey="notes" inherits="GameFontNormal" justifyV="TOP" justifyH="LEFT" text="In this window:|nLeft mouse = drag to move|nRight mouse = click to dock">
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" relativeTo="F2PAddonQueueInfoFrame">
+							<Offset x="20" y="25"/>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+			<Layer level="BORDER">
+				<Texture file="Interface\HelpFrame\HelpFrame-TopLeft">
+					<Size x="222" y="162"/>
+					<TexCoords left="0" right="0.59375" top="0" bottom="0.6328125"/>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="F2PAddonQueueInfoFrame"/>
+					</Anchors>
+				</Texture>
+				<Texture file="Interface\HelpFrame\HelpFrame-TopRight">
+					<Size x="221" y="162"/>
+					<TexCoords left="0" right="1" top="0" bottom="0.6328125"/>
+					<Anchors>
+						<Anchor point="TOPRIGHT" relativeTo="F2PAddonQueueInfoFrame">
+							<Offset x="205" y="0"/> <!--offset because the image has a transparent area on it's right side-->
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<Texture file="Interface\HelpFrame\HelpFrame-BotLeftBig">
+					<Size x="219" y="128"/>
+					<TexCoords left="0" right="0.59375" top="0.5" bottom="1"/>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" relativeTo="F2PAddonQueueInfoFrame"/>
+					</Anchors>
+				</Texture>
+				<Texture file="Interface\HelpFrame\HelpFrame-BotRightBig">
+					<Size x="225" y="128"/>
+					<TexCoords left="0" right="1" top="0.5" bottom="1"/>
+					<Anchors>
+						<Anchor point="BOTTOMRIGHT" relativeTo="F2PAddonQueueInfoFrame">
+							<Offset x="206" y="0"/> <!--offset because the image has a transparent area on it's right side-->
+						</Anchor>
+					</Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Button name="$parent_Close" parentKey="close" inherits="UIPanelCloseButton">
+				<Size x="45" y="36"/>
+				<Anchors>
+					<Anchor point="TOPRIGHT">
+						<Offset x="127" y="-1"/>
+					</Anchor>
+				</Anchors>
+			</Button>
+		</Frames>
+		
+		<Scripts>
+			<OnLoad>				
+				self:RegisterForDrag("LeftButton")
+			</OnLoad>
+			<OnDragStart>
+				self:StartMoving()
+			</OnDragStart>
+			<OnDragStop>
+				self:StopMovingOrSizing()
+                F2PAddonGlobalVars.f2pq_docked = false
+			</OnDragStop>
+			<OnMouseUp>
+                if button == "RightButton" then
+					F2PAddonQueueInfoFrame:SetPoint("TOPLEFT", PVPUIFrame, "TOPRIGHT")
+					F2PAddonQueueInfoFrame:SetPoint("BOTTOMRIGHT", PVPUIFrame, "TOPRIGHT", 238, -290)
+					F2PAddonQueueInfoFrame:SetPoint("BOTTOMLEFT", PVPUIFrame, "TOPRIGHT", 0, -290)
+					F2PAddonQueueInfoFrame:SetPoint("TOPRIGHT", PVPUIFrame, "TOPRIGHT", 238, 0)
+                    F2PAddonGlobalVars.f2pq_docked = true
+                end
+			</OnMouseUp>
+		</Scripts>
+	</Frame>
+	
+</Ui>
+
+
+
+
+
+

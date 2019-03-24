@@ -1,0 +1,33 @@
+#
+#
+#
+#
+## Interface: 60200
+## Version: 1.2.22
+## X-CompatDBVers: 1.2.16/1.2.17/1.2.18/1.2.19/1.2.20/1.2.21
+## Title: F2PAddon
+## Author: Yasueh(H)/Tsuda(A) - Aerie Peak US
+## Notes: Allows chat between Starter Edition players who are running the addon, and they may also request party invites from paid accounts running the addon.
+## SavedVariables: F2PAddon_Variables
+## DefaultState: disabled
+f2pconstants.lua
+f2pdefaults.lua
+locales\f2ploc.enUS.lua
+locales\f2ploc.frFR.lua
+locales\f2ploc.esES.lua
+locales\f2ploc.deDE.lua
+f2pmisc.lua
+f2pchannel.lua
+f2pdata.lua
+f2pfriends.lua
+f2pchat.lua
+f2pachievements.lua
+f2pqueue.lua
+f2pslashcmds.lua
+f2poptions.lua
+f2paddon.lua
+libs\ChatThrottleLib.lua
+f2paddon.xml
+f2pinvite.lua
+f2pguild.lua
+f2pinfo.lua
