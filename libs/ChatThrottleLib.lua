@@ -213,7 +213,7 @@ function ChatThrottleLib:Init()
 			return ChatThrottleLib.Hook_SendChatMessage(...)
 		end)
 		--SendAddonMessage
-		hooksecurefunc("SendAddonMessage", function(...)
+		hooksecurefunc(C_ChatInfo, "SendAddonMessage", function(...)
 			return ChatThrottleLib.Hook_SendAddonMessage(...)
 		end)
 	end
@@ -465,7 +465,7 @@ function ChatThrottleLib:SendAddonMessage(prio, prefix, text, chattype, target, 
 	if not self.bQueueing and nSize < self:UpdateAvail() then
 		self.avail = self.avail - nSize
 		bMyTraffic = true
-		_G.SendAddonMessage(prefix, text, chattype, target)
+		C_ChatInfo.SendAddonMessage(prefix, text, chattype, target)
 		bMyTraffic = false
 		self.Prio[prio].nTotalSent = self.Prio[prio].nTotalSent + nSize
 		if callbackFn then

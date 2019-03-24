@@ -7,7 +7,7 @@ local channelListWait
 
 
 function F2PAddon_OnLoad(self)
-	RegisterAddonMessagePrefix("f2pq")
+	C_ChatInfo.RegisterAddonMessagePrefix("f2pq")
 	self:RegisterEvent("ADDON_LOADED")
 	self:RegisterEvent("PLAYER_LOGIN")
 	self:RegisterEvent("PLAYER_ENTERING_WORLD")
@@ -26,7 +26,6 @@ function F2PAddon_OnLoad(self)
 	DEFAULT_CHAT_FRAME:AddMessage(msg)
 	ChatFrame_AddMessageEventFilter("CHAT_MSG_CHANNEL", F2PChat_FilterP2PTrolls)
 	ChatFrame_AddMessageEventFilter("CHAT_MSG_WHISPER", F2PChat_FilterP2PTrolls)
-	F2PMisc_BuildMapIDNameTable()
 end
 
 function F2PAddon_OnEvent(self, event, ...)
@@ -45,7 +44,7 @@ function F2PAddon_OnEvent(self, event, ...)
 				F2PAddonGlobalVars.AddonChannel1Name = F2PAddonGlobalVars.Channel1Name .. "AC" --use a new addon channel name to go with the chat channel name
 			end
 			
-			RegisterAddonMessagePrefix(F2PAddonGlobalVars.AddonChannel1Name)
+			C_ChatInfo.RegisterAddonMessagePrefix(F2PAddonGlobalVars.AddonChannel1Name)
 
 			F2PAddon_CreateOptionsFrames()
 		end

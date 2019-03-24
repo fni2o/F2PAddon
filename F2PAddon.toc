@@ -2,7 +2,7 @@
 #
 #
 #
-## Interface: 60200
+## Interface: 80000
 ## Version: 1.2.22
 ## X-CompatDBVers: 1.2.16/1.2.17/1.2.18/1.2.19/1.2.20/1.2.21
 ## Title: F2PAddon

@@ -268,9 +268,9 @@ if not GameLimitedMode_IsActive() then --check for paid account
 		
 		local faction = F2PAddonGlobalVars.myFaction
 		
-		local currentZone = F2PAddonGlobalVars.MapIDNameTable[GetCurrentMapAreaID()]  --need to pull the text string from our own table
+		local currentZone = C_Map.GetMapInfo(C_Map.GetBestMapForUnit("player")).name
 		
-		if level == 90 and (   (faction == "Horde" and ( tContains(h_90_names, currentZone) or tContains(l_74_names, currentZone) ))  or (faction == "Alliance" and ( tContains(a_90_names, currentZone) or tContains(l_74_names, currentZone)))   ) then
+		if level >= 90 and (   (faction == "Horde" and ( tContains(h_90_names, currentZone) or tContains(l_74_names, currentZone) ))  or (faction == "Alliance" and ( tContains(a_90_names, currentZone) or tContains(l_74_names, currentZone)))   ) then
 			return 4
 		elseif level >= 74 and (   (faction == "Horde" and ( tContains(horde_city_names, currentZone) or tContains(l_74_names, currentZone) ))  or (faction == "Alliance" and ( tContains(alliance_city_names, currentZone) or tContains(l_74_names, currentZone)))   ) then
 			return 3

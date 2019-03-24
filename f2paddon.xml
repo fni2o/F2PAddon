@@ -22,7 +22,7 @@
 	<Frame name="F2PAddonQueueInfoFrame" parent="UIParent" enableMouse="true" movable="true" clampedToScreen="true" hidden="true" frameStrata="DIALOG">
 		<Size x="238" y="290" />
 		<Anchors>
-			<Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="PVPUIFrame">
+			<Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="PVEFrame">
 					<Offset x="0" y="0"/>
 			</Anchor>
 		</Anchors>
