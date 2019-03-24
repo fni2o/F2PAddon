@@ -15,15 +15,16 @@ function F2PFriends_FLUpdate()  --updates the game friends list with people from
 	local preUpdateFriendsList = {}
 	local addList = {}
 	local f_num = GetNumFriends()
+	local me = F2PMisc_NamePlusRealm(UnitName("player"))
 	--make a list of who's in friends at the moment
 	for y = 1, f_num do
-		local name = GetFriendInfo(y);
+		local name = F2PMisc_NamePlusRealm(GetFriendInfo(y));
 		tinsert(preUpdateFriendsList, name)
 	end
 
 	--create a list of just those people in the channel who aren't yet in the friends list
 	for i, v in pairs(F2PAddonGlobalVars.inChatList) do
-		if not tContains(preUpdateFriendsList, v) then
+		if not tContains(preUpdateFriendsList, v) and v ~= me then
 			tinsert(addList, F2PAddonGlobalVars.inChatList[i])
 		end
 	end
