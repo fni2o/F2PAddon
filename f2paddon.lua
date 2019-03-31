@@ -170,6 +170,7 @@ function F2PAddon_OnUpdate(self, elapsed)
 			--[[]]if F2PAddon_Variables.Settings.Verbose then print("global channel table updated") end
 			--[[]]if F2PAddon_Variables.Settings.Verbose then print("updating friends list") end
 			F2PFriends_FLUpdate()  --add people who aren't in the friends list who are in the channel list
+			F2PFriends_onlineFriendsList_Update() -- build "mailing list"
 			counter = 0
 			startup = 3 -- go into section 3 of the startup process
 			
