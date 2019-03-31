@@ -254,6 +254,7 @@ function F2PInfo_ListChannelMembers()
 	local f_num = GetNumFriends()
 	for y = 1, f_num do
 		local name, level, class, loc, connected, status = GetFriendInfo(y)
+		name = F2PMisc_NamePlusRealm(name)
 		level = tostring(level)
 		local levelLength = #level
 		local level = "|c00000000"..string.rep("_", 3 - levelLength).."|cFF"..channelColor..level --pad the level with leading spaces
