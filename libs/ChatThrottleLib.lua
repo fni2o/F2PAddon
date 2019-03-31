@@ -35,7 +35,7 @@ if _G.ChatThrottleLib then
 		-- ... and if someone has securehooked, they can kiss that goodbye too... >.<
 		_G.SendChatMessage = _G.ChatThrottleLib.ORIG_SendChatMessage
 		if _G.ChatThrottleLib.ORIG_SendAddonMessage then
-			_G.SendAddonMessage = _G.ChatThrottleLib.ORIG_SendAddonMessage
+			C_ChatInfo.SendAddonMessage = _G.ChatThrottleLib.ORIG_SendAddonMessage
 		end
 	end
 	_G.ChatThrottleLib.ORIG_SendChatMessage = nil
@@ -476,7 +476,7 @@ function ChatThrottleLib:SendAddonMessage(prio, prefix, text, chattype, target, 
 
 	-- Message needs to be queued
 	local msg = NewMsg()
-	msg.f = _G.SendAddonMessage
+	msg.f = C_ChatInfo.SendAddonMessage
 	msg[1] = prefix
 	msg[2] = text
 	msg[3] = chattype
