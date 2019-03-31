@@ -48,6 +48,7 @@ function F2PFriends_AddJoiner(...)
 	local f_num = GetNumFriends()
 	for y = 1, f_num do		--make a list containing current friends
 		local name = GetFriendInfo(y)
+		name = F2PMisc_NamePlusRealm(name)
 		tinsert(friends, name)
 	end	
 	
